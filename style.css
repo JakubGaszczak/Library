@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(28, 152, 209, .5);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 100vh;
+    width: 100vw;
+}
+
+header {
+    background-color: rgb(28, 152, 209, .4); 
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-left: 150px;
+    letter-spacing: 2px;
+}
+
+.grid-books {
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    margin: 3% 14%;
+    gap: 2rem;
+}
+
+.book {
+    background-color: white;
+}
+
+.book {
+    text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.book .title {
+    background-color: rgb(28, 152, 209, .7); 
+    margin-bottom: 20px;
+}
+
+.book p {
+    padding: 20px 0;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.book .delete-book {
+    background-color: rgb(28, 152, 209, .7); 
+    padding: 20px 0;
+    margin-top: 2.5rem;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+footer {
+    font-size: 3rem;
+    background-color: rgb(28, 152, 209, .7);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 0 70px 70px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, .2);
+}
+
+.modal {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+    background-color: rgb(28, 152, 209);
+    min-width: 300px;
+    max-width: 350px;
+    min-height: 400px;
+    max-height: 450px;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 30px;
+}
+
+.modal h2 {
+    font-size: 2.5rem;
+    padding: 25px 0;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.modal input {
+    margin-bottom: 18px;
+    height: 1.8rem;
+    
+}
+
+.modal label {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.modal .submit-btn {
+    margin-top: 30px;
+    height: 3rem;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: rgb(28, 152, 209);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.modal .submit-btn:hover {
+    background-color: rgb(28, 152, 209, .1);
+    color: black;
+}
+
+
+
+
+
+
