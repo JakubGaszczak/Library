@@ -1,13 +1,61 @@
+// Local Storage 
+class Store {
+    static getBooks() {
+        let books;
+        if (localStorage.getItem("books") == null) {
+            books = [];
+        } else {
+            books = JSON.parse(localStorage.getItem("books"));
+        }
+        return books;
+    }
+
+    static addBook(book) {
+        const books = Store.getBooks();
+
+        books.push(book);
+
+        localStorage.setItem("books", JSON.stringify(books));
+    }
+}
+
+// Delete book
+const deleteBook = e => {
+    if (e.classList.contains("delete-book")) {
+        e.parentElement.parentElement.remove();
+    }
+}
+
+// Add a new book
+const createNewBook = () => {
+    const books = document.querySelector(".grid-books");
+    const title = document.querySelector("#title");
+    const author = document.querySelector("#author");
+    const pages = document.querySelector("#number-of-pages");
+
+    const book = document.createElement("div");
+    book.classList.add("book");
+    book.innerHTML = `
+    <div class="inputs">
+        <p class="title">${title.value}</p>
+        <p class="author">${author.value}</p>
+        <p>${pages.value}</p>
+        <div class="delete-book">Delete <i class="fa-solid fa-trash"></i></div>
+    </div>`;
+    books.appendChild(book);
+}
+
 // Error Message 
 const errorMessage = () => {
-    const modal = document.querySelector(".modal");
+    const form = document.querySelector("form");
     const submitBtn = document.querySelector(".submit-btn");
 
     const error = document.createElement("div");
     error.innerHTML = 
-    "<p>Uzupełnij wszystkie pola!</p>";
-    modal.insertBefore(error, submitBtn);
+    "<p class='error'>Uzupełnij wszystkie pola!</p>";
+    form.insertBefore(error, submitBtn);
 
+    setTimeout(() => document.querySelector(".error").remove(), 3000);
 }
 
 // Inputs Validation
@@ -20,9 +68,14 @@ const checkInputs = () => {
     if (title.value == "" || author.value == "" || pages.value == "") {
         errorMessage();
     } else {
-        addNewBook();
+        createNewBook();
     }
 }
+
+// Event listner: Delete book
+document.querySelector(".grid-books").addEventListener("click", e => {
+    deleteBook(e.target);
+})
 
 // Event listner: Add a new book
 document.querySelector(".submit-btn").addEventListener("click", e => {
@@ -41,5 +94,3 @@ window.addEventListener("click", e => {
         document.querySelector(".modal-container").style.display = "none";
     }
 })
-
-errorMessage();
